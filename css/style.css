@@ -1,0 +1,204 @@
+/* on veut déclarer des "variables" pour ne plus répéter nos codes couleurs dans notre feuille de styles */
+html {
+    /* on déclare une couleur => on lui donne un nom, et une valeur */
+    --main-color: #f0f;
+    --second-color: #ff0;
+    --third-color: #0ff;
+    --fourth-color: #12ff00;
+}
+
+/* Si je veux changer la font-size de base pour les calculs avec l'unité rem
+alors, je change la font-size de html */
+/*html {
+    font-size: 12px; /* par défaut, c'est 16px */
+/*}*/
+
+body {
+    background-color: lightgrey;
+    font-family: Arial, sans-serif;
+    /*font-size: 16px; /* valeur par défaut des navigateurs de tte façon */
+    color: var(--fourth-color);
+}
+
+.container {
+    background-color: var(--third-color);
+    max-width: 800px;
+    margin: 1rem auto; /* 1rem = 16px, soit la font-size par défaut de html */
+    border: 1px solid var(--fourth-color);
+    padding: 1rem;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.125em; /* 50px */
+    font-weight: bold;
+
+    /* espace vital au dela de la peau = margin */
+    margin: 1rem 0;
+
+    /* espace entre ma peau et mes organes => le gras => padding */
+    padding: 1rem 0;
+
+    /* Bordures haut et bas */
+    border-top: 2px solid var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+}
+
+/* main { mais on a ajouté des sections dans main */
+#presentation {
+    background-color: var(--second-color);
+    width: 80%;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+
+h2 {
+    font-size: 1.6em;
+    font-weight: bold;
+    text-align: center;
+
+    margin: 1rem 0;
+}
+
+h3 {
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    color: var(--main-color);
+    margin: 1rem 0;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Oswald", Arial, sans-serif;
+}
+
+/* on ne doit pas cibler toutes les images, car ça impacte les autres
+On doit plutot cibler l'image en question => class ou id */
+.img-presentation {
+    width: 100px;
+
+    display: block;
+    margin: 1.5rem auto; /* 24px*/
+}
+
+p {
+    line-height: 1.3; /* coefficient => 1,3 fois l'interligne par défaut */
+    /* je remets les espaces externes par défaut (que reset.css a supprimé) */
+    margin: 1rem 0;
+}
+
+dfn {
+    font-weight: bold;
+}
+
+aside {
+    font-style: italic;
+    text-align: center;
+    font-size: 0.85em;
+    border-top: 1px solid var(--fourth-color);
+}
+
+footer {
+    text-align: center;
+    background-color: var(--second-color);
+    padding: 1rem 0 5rem 0;
+}
+
+/* bonus */
+.la-serie {
+    background-color: var(--fourth-color);
+    color: var(--third-color);
+    font-size: 0.32em; /* 50px (parent) => 16px */
+    padding: 0.5rem 1rem;
+}
+
+/* acteurs */
+#actors {
+    width: 80%;
+    margin: 1rem auto;
+}
+
+#actors a {
+    background-color: var(--second-color);
+    text-transform: uppercase;
+    font-size: 0.8em;
+    text-align: center;
+    color: var(--main-color);
+
+    /* on veut forcer à prendre toute la largeur => block
+    Ainsi, toute la ligne est cliquable */
+    display: block;
+
+    margin: 4px 0; /* en dessous de 6px, autant laisser la taille en px */
+    padding: 0.375rem 0;
+
+    border-radius: 0.75rem; /* 12px; */
+}
+
+/* lorsque les balies <a> dans #actors sont survolées par la souris,
+ces balises changent d'état => elles ont l'état "hover"
+Et ici, on cible ces balises avec l'état hover */
+#actors a:hover {
+    background-color: var(--main-color);
+    color: var(--third-color);
+}
+
+/* en images */
+#en-images {
+    margin: 1rem 0;
+}
+.picture {
+    width: 27%;
+    margin: 1rem 0;
+    text-align: center;
+    border: 1px solid #ccc; /* #cccccc */
+    padding: 1rem 1rem 0 1rem;
+}
+
+.picture img {
+    /* Soit on spécifie la largeur en px (mais strict et tout changement sur la largeur du container nécessitera un modif ici */
+    /*width: 195px;*/
+
+    /* on préfère fournir une taille "relative", à 100% du "content" de la balise parent */
+    /* L'unité % signifie % par rapport au parent
+    => pour width, c'est une %age de la width du parent */
+    width: 100%;
+}
+
+/* float */
+.img-presentation {
+    float: left;
+    margin: 0 1rem 1rem 0;
+    width: 200px;
+}
+
+/* Mais l'image déborde et le aside flotte aussi autour, alors qu'on ne le veut pas
+=> clear */
+aside {
+    clear: both;
+}
+
+/* inline-block */
+/* on veut mettre les liens des acteurs les un à côté des autres */
+#actors ul {
+    text-align: center;
+}
+#actors li {
+    display: inline-block;
+}
+
+#actors a {
+    padding: 0.375rem 0.625rem;
+}
+
+/* */
+.pictures {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
